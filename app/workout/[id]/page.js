@@ -51,7 +51,7 @@ export default function WorkoutDetail() {
   return (
     <div className="mx-auto max-w-[1280px] px-4 pb-16 pt-8 sm:px-6 lg:pt-12">
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-14">
-        <div className="h-[340px] overflow-hidden rounded-2xl border border-[#232834] bg-[#171a21] sm:h-[480px] lg:h-[735px]">
+        <div className="h-[280px] overflow-hidden rounded-2xl border border-[#232834] bg-[#171a21] sm:h-[420px] lg:h-[735px]">
           <img
             src={workout.image}
             alt={workout.name}
@@ -61,13 +61,11 @@ export default function WorkoutDetail() {
 
         <div className="flex flex-col gap-6">
           <div>
-            <h1 className="font-display text-4xl font-bold uppercase">
+            <h1 className="font-display text-3xl font-bold uppercase sm:text-4xl">
               {workout.name}
             </h1>
 
-            <p className="mt-3 text-neutral-400">
-              {workout.description}
-            </p>
+            <p className="mt-3 text-neutral-400">{workout.description}</p>
 
             <div className="mt-4">
               <Tags tags={workout.muscleGroups} color="bg-cta" />
@@ -96,10 +94,7 @@ export default function WorkoutDetail() {
 
             <ol className="flex flex-col gap-3">
               {workout.instructions.map((instruction, index) => (
-                <li
-                  key={index}
-                  className="flex gap-3 text-neutral-300"
-                >
+                <li key={index} className="flex gap-3 text-neutral-300">
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-cta text-sm font-bold text-black">
                     {index + 1}
                   </span>
@@ -121,8 +116,8 @@ export default function WorkoutDetail() {
               {full
                 ? "Plan is full"
                 : inPlan
-                ? "Already in today's plan"
-                : "Add to today's plan"}
+                  ? "Already in today's plan"
+                  : "Add to today's plan"}
             </button>
 
             <button
