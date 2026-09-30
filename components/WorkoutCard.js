@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Clock, Flame, Star } from "lucide-react";
 
 export default function WorkoutCard({ workout }) {
   return (
@@ -31,9 +32,20 @@ export default function WorkoutCard({ workout }) {
           </p>
 
           <div className="mt-4 flex items-center justify-between border-t border-line pt-3 text-xs text-neutral-400">
-            <span>◷ {workout.duration} min</span>
-            <span>♨ {workout.caloriesBurned} kcal</span>
-            <span>★ {workout.rating}</span>
+            <span className="flex items-center gap-1">
+              <Clock size={14} className="text-accent" />
+              {workout.duration} min
+            </span>
+
+            <span className="flex items-center gap-1">
+              <Flame size={14} className="text-accent" />
+              {workout.caloriesBurned} kcal
+            </span>
+
+            <span className="flex items-center gap-1">
+              <Star size={14} className="text-accent" />
+              {workout.rating}
+            </span>
           </div>
         </div>
       </article>
