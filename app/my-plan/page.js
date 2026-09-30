@@ -38,10 +38,7 @@ export default function MyPlan() {
     ["Minutes", plan.reduce((total, workout) => total + workout.duration, 0)],
     [
       "Calories",
-      plan.reduce(
-        (total, workout) => total + workout.caloriesBurned,
-        0
-      ),
+      plan.reduce((total, workout) => total + workout.caloriesBurned, 0),
     ],
   ];
 
@@ -55,9 +52,12 @@ export default function MyPlan() {
         Cap of five lifts for today. Finish them, then load more.
       </p>
 
-      <div className="mt-6 grid grid-cols-3 divide-x divide-[#232732] rounded-2xl border border-[#232732] bg-[#13161d] py-6">
+      <div className="mt-6 grid grid-cols-1 divide-y divide-[#232732] rounded-2xl border border-[#232732] bg-[#13161d] py-2 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:py-6">
         {metrics.map(([label, value]) => (
-          <div key={label} className="px-3 sm:px-8">
+          <div
+            key={label}
+            className="flex items-center justify-between px-5 py-4 sm:block sm:px-8 sm:py-0"
+          >
             <p className="text-xs font-semibold uppercase tracking-wide text-neutral-400">
               {label}
             </p>
@@ -91,7 +91,6 @@ export default function MyPlan() {
 
         <label className="flex items-center gap-3 text-xs text-neutral-400">
           Sort By
-
           <span className="relative">
             <select
               value={sort}
@@ -136,16 +135,13 @@ export default function MyPlan() {
         ) : (
           <ul className="flex flex-col gap-4">
             {list.map((workout) => {
-              const isDone =
-                tab === "plan" && done.includes(workout.id);
+              const isDone = tab === "plan" && done.includes(workout.id);
 
               return (
                 <li
                   key={workout.id}
                   className={`flex flex-col gap-4 rounded-2xl border bg-[#14171e] p-4 sm:flex-row sm:items-center sm:justify-between ${
-                    isDone
-                      ? "border-accent/60"
-                      : "border-[#232732]"
+                    isDone ? "border-accent/60" : "border-[#232732]"
                   }`}
                 >
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -159,9 +155,7 @@ export default function MyPlan() {
                       <div className="flex items-center gap-2">
                         <h3
                           className={`font-display text-lg font-bold uppercase leading-6 ${
-                            isDone
-                              ? "text-neutral-500 line-through"
-                              : ""
+                            isDone ? "text-neutral-500 line-through" : ""
                           }`}
                         >
                           {workout.name}
@@ -182,10 +176,10 @@ export default function MyPlan() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
                     <Link
                       href={`/workout/${workout.id}`}
-                      className="inline-flex h-[34px] items-center rounded-full border border-[#374151] px-4 text-xs font-semibold hover:border-accent hover:text-accent"
+                      className="inline-flex h-[34px] flex-1 items-center justify-center rounded-full border border-[#374151] px-4 text-xs font-semibold hover:border-accent hover:text-accent sm:flex-none"
                     >
                       View Details
                     </Link>
@@ -194,7 +188,7 @@ export default function MyPlan() {
                       <button
                         onClick={() => markDone(workout)}
                         disabled={isDone}
-                        className="inline-flex h-8 items-center gap-1.5 rounded-full bg-cta px-4 text-xs font-semibold text-black hover:brightness-110 disabled:opacity-40"
+                        className="inline-flex h-8 flex-1 items-center justify-center gap-1.5 rounded-full bg-cta px-4 text-xs font-semibold text-black hover:brightness-110 disabled:opacity-40 sm:flex-none"
                       >
                         <Check size={14} />
                         Mark as Done
