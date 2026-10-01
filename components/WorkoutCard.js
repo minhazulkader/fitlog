@@ -31,7 +31,7 @@ export default function WorkoutCard({ workout }) {
             {workout.equipment}
           </p>
 
-          <div className="mt-4 flex items-center justify-between border-t border-line pt-3 text-xs text-neutral-400">
+          <div className="mt-4 flex items-center gap-x-5 border-t border-line pt-3 text-xs text-neutral-400">
             <span className="flex items-center gap-1">
               <Clock size={14} className="text-accent" />
               {workout.duration} min
